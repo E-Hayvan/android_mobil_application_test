@@ -27,3 +27,10 @@ jobs:
       
     - name: Build with Gradle
       run: ./gradlew build
+
+    # Run emulator
+    - name: Run integration test on emulator
+      uses: reactivecircus/android-emulator-runner@v2
+      with:
+        api-level: 29
+        script: ./gradlew createDebugCoverageReport --stacktrace
