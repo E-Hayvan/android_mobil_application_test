@@ -27,6 +27,18 @@ jobs:
       
     - name: Build with Gradle
       run: ./gradlew build
+      
+    # Check the code with detekt, you can remove this job if you don't use detekt
+    - name: Run detekt Linter
+      run: ./gradlew detekt
+
+    # Check the code with Android linter (need assemble)
+    - name: Run Android Linter
+      run: ./gradlew lint
+
+    # Check the code with Spotless
+    - name: Run Spotless
+      run: ./gradlew spotlessCheck
 
     # Run emulator
     - name: Run integration test on emulator
